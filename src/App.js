@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>MIFIEL</h1>
-      </header>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <AppRouter />
+    </Suspense>
   );
 }
 
