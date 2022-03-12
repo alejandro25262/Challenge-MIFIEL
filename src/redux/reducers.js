@@ -1,8 +1,3 @@
-import { combineReducers } from "redux";
-import documentos from "./documentos/reducer";
+import state from "./documents/reducer";
 
-const reducers = combineReducers({
-  documentos,
-});
-
-export default reducers;
+export default state;

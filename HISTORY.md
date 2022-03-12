@@ -14,3 +14,11 @@
 - documentation of store and components
 - reducer
 - customHook (useFetch)
+
+## 12/03/2022 02:00am-05:23am
+
+- change customHook for sagas
+- Avatar and Logo component
+- Header
+- drag and drop is implemented
+- tailwindcss is implemented in all components

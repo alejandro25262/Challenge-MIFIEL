@@ -5,7 +5,7 @@
 import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const Index = lazy(() => import("../pages/Documents"));
+const Index = lazy(() => import("../pages/Documents/Index"));
 const AddDocument = lazy(() => import("../pages/AddDocument/AddDocument"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
