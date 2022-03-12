@@ -1,12 +1,14 @@
 import { createStore } from "redux";
-import reducers from "./reducers.js";
+import { devToolsEnhancer } from "redux-devtools-extension";
+import reducers from "./reducers";
 
 export function configureStore(initialState) {
-  const store = createStore(reducers, initialState);
+  const store = createStore(reducers, initialState, devToolsEnhancer());
 
   if (module.hot) {
     module.hot.accept("./reducers", () => {
-      const nextRootReducer = require("./reducers.js");
+      // eslint-disable-next-line global-require
+      const nextRootReducer = require("./reducers");
       store.replaceReducer(nextRootReducer);
     });
   }

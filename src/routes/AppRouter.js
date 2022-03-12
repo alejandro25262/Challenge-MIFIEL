@@ -5,7 +5,7 @@
 import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const Pruebas = lazy(() => import("../pages/Documents/Pruebas"));
+const Index = lazy(() => import("../pages/Documents"));
 const AddDocument = lazy(() => import("../pages/AddDocument/AddDocument"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
@@ -13,7 +13,7 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" exact element={<Pruebas />} />
+        <Route path="/" element={<Index />} />
         <Route path="/subirDocumento/*" element={<AddDocument />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

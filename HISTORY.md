@@ -12,3 +12,5 @@
 ## 12/03/2022 09:00am-10:12am
 
 - documentation of store and components
+- reducer
+- customHook (useFetch)
