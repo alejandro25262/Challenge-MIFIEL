@@ -8,3 +8,7 @@
 - install dependencies
 - config tailwindcss
 - basic structure
+
+## 12/03/2022 09:00am-10:12am
+
+- documentation of store and components
