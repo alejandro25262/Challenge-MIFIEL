@@ -9,21 +9,23 @@ import {
   deleteDocumentApiError,
   deleteDocumentApiSuccess,
   getDocumentsSuccess,
+  postDocumentApiError,
 } from "../documents/actions";
+
+import { DOCUMENTS_URL } from "../../constants/apiRoutes.js";
 
 export function* getDocuments() {
   // eslint-disable-next-line no-use-before-define
   yield takeEvery(GET_DOCUMENTS, getDocumentsSaga);
 }
 
-const getDocumentsDataApi = async ({ page, perPage, status }) => {
-  const data = await getMIFIEL(
-    "https://app-sandbox.mifiel.com/api/v1/documents",
-    {
-      page,
-      page_size: perPage,
-    }
-  );
+const getDocumentsDataApi = async ({ page, perPage, pending, signed }) => {
+  const data = await getMIFIEL(DOCUMENTS_URL, {
+    page,
+    page_size: perPage,
+    pending,
+    signed,
+  });
   if (data) {
     const newData = data.map(
       ({ file_file_name, signers, created_at, state, id }) => ({
@@ -54,10 +56,7 @@ export function* deleteDocument() {
 }
 
 const deleteDocumentApi = async ({ id }) => {
-  const data = await deleteDocumentMIFIEL(
-    "https://app-sandbox.mifiel.com/api/v1/documents",
-    id
-  );
+  const data = await deleteDocumentMIFIEL(DOCUMENTS_URL, id);
   return data;
 };
 
@@ -85,18 +84,34 @@ export function* postDocument() {
 }
 
 const postDocumentApi = async (document) => {
-  console.log(document);
-  // const data = await postDocumentMIFIEL(
-  //   "https://app-sandbox.mifiel.com/api/v1/documents",
-  //   id
-  // );
-  // return data;
+  const { binary, signatories } = document;
+  const form = new FormData();
+  form.append("file", binary);
+  signatories.map((signer, index) => {
+    form.append(`signatories[${index}][name]`, signer.name);
+    form.append(`signatories[${index}][email]`, signer.email);
+    form.append(`signatories[${index}][tax_id]`, signer.rfc);
+  });
+  const data = await postDocumentMIFIEL(DOCUMENTS_URL, form);
+  return data;
 };
 
 function* postDocumentSaga({ payload }) {
   try {
-    const { document } = payload;
+    const { document, navigate } = payload;
     const response = yield call(postDocumentApi, document);
+    if (response.status === "fail") {
+      yield put(postDocumentApiError(response.errors));
+    }
+
+    if (response.status === "error") {
+      yield put(postDocumentApiError(response.errors));
+    }
+
+    if (response.state) {
+      window.alert("¡Has enviado el documento exitosamente!");
+      navigate("/");
+    }
   } catch (error) {
     console.log(error);
   }

@@ -4,6 +4,7 @@ import { SAVE_USER_DATA } from "../actions";
 import { saveUserSuccess } from "../user/actions";
 
 import utf8 from "utf8/utf8";
+import { USER_ME_URL } from "../../constants/apiRoutes";
 
 export function* getUserData() {
   // eslint-disable-next-line no-use-before-define
@@ -11,9 +12,7 @@ export function* getUserData() {
 }
 
 const getUserDataApi = async () => {
-  const data = await getMIFIEL(
-    "https://app-sandbox.mifiel.com/api/v1/users/me"
-  );
+  const data = await getMIFIEL(USER_ME_URL);
   if (data) {
     const { name, email } = data;
     const nameArray = name.split(" ");

@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Documents = lazy(() => import("../pages/Documents/Index"));
 const AddDocument = lazy(() => import("../pages/AddDocument/Index"));
-const NotFound = lazy(() => import("../pages/NotFound"));
+const NotFound = lazy(() => import("../pages/NotFound/Index"));
 
 const AppRouter = () => {
   return (

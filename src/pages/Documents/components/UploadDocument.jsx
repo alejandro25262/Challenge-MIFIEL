@@ -41,10 +41,6 @@ const UploadDocument = () => {
   };
 
   const handleSubmit = async (files, allFiles) => {
-    // const blob = new Blob([files[0].file], {
-    //   type: "application/octet-binary",
-    // });
-    // console.log(blob);
     dispatch(saveDocument(files[0].file));
     navigate("/subirDocumento");
 

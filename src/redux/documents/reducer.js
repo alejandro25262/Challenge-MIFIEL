@@ -39,7 +39,8 @@ const INIT_STATE = {
   error: null,
   list: {
     filters: {
-      status: "all",
+      pending: false,
+      signed: false,
       page: 1,
       perPage: 10,
     },
@@ -114,7 +115,7 @@ export default (state = INIT_STATE, action) => {
           loading: false,
           filters: {
             ...state.list.filters,
-            status: action.payload.status,
+            ...action.payload.newStatus,
             page: action.payload.page,
             perPage: action.payload.perPage,
           },

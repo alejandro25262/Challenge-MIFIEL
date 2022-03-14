@@ -132,22 +132,19 @@ const ListDocuments = () => {
         <div className="w-1/2 h-1 bg-gray-900 rounded-full mx-2" />
         <div className="flex items-center">
           <div className="bg-yellow-500 w-3 h-3 rounded-full mr-2" />
-          <p className="cursor-pointer" onClick={() => handleClick("progress")}>
+          <p className="cursor-pointer" onClick={() => handleClick("pending")}>
             En progreso
           </p>
         </div>
         <div className="flex items-center mx-4">
           <div className="bg-green-500 w-3 h-3 rounded-full mr-2" />
-          <p
-            className="cursor-pointer"
-            onClick={() => handleClick("completed")}
-          >
+          <p className="cursor-pointer" onClick={() => handleClick("signed")}>
             Firmado
           </p>
         </div>
         <div className="flex items-center">
           <div className="bg-gray-900 w-3 h-3 rounded-full mr-2" />
-          <p className="cursor-pointer" onClick={() => handleClick("all")}>
+          <p className="cursor-pointer" onClick={() => handleClick("")}>
             Todos
           </p>
         </div>
@@ -211,7 +208,7 @@ const ListDocuments = () => {
           )}
         </tbody>
       </table>
-      <div className="mt-2">
+      <div className="mt-8">
         <span>Ver </span>
         <select
           name="select"

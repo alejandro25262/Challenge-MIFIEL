@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,7 +12,11 @@ const AddDocument = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { document } = useSelector((state) => state);
-  const { signatories } = document;
+  const { signatories, binary } = document;
+
+  useEffect(() => {
+    if (!binary) navigate("/");
+  }, [binary]);
 
   const handleChange = ({ target: { value, name } }, index) => {
     const newSignatories = [...signatories];
@@ -33,7 +37,7 @@ const AddDocument = () => {
 
   const postDocument = (ev) => {
     ev.preventDefault();
-    dispatch(postDocumentApi(document));
+    dispatch(postDocumentApi(document, navigate));
   };
 
   return (

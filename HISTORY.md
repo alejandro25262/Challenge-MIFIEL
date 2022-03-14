@@ -32,3 +32,11 @@
 - route management
 - asynchronous requests using sagas
 - errors management
+
+## 14/03/2022 03:pm-04:24pm
+
+- styles in NotFound page, error 404
+- mapping of the data to upload document
+- post document in saga
+- filters in saga
+- constants (Api routes)

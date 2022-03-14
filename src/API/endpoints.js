@@ -29,14 +29,13 @@ export const getMIFIEL = async (apiUrl, filters = {}) => {
   return catalogo;
 };
 
-export const postDocumentMIFIEL = async (apiUrl, model) => {
+export const postDocumentMIFIEL = async (apiUrl, body) => {
   const requestConfig = {
     method: "POST",
     headers: new Headers({
-      "Content-Type": "application/json",
       ...auth,
     }),
-    body: JSON.stringify(model),
+    body,
   };
 
   const request = new Request(apiUrl, requestConfig);

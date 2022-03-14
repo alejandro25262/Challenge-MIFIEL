@@ -52,9 +52,13 @@ export const getDocumentsError = (error) => {
 };
 
 export const setFiltersDocuments = (status, page, perPage) => {
+  let newStatus = { pending: false, signed: false };
+  if (status === "pending") newStatus = { pending: true, signed: false };
+
+  if (status === "signed") newStatus = { pending: false, signed: true };
   return {
     type: SET_FILTER_DOCUMENTS,
-    payload: { status, page, perPage },
+    payload: { newStatus, page, perPage },
   };
 };
 
@@ -79,10 +83,10 @@ export const delSigner = (signatories) => {
   };
 };
 
-export const postDocumentApi = (document) => {
+export const postDocumentApi = (document, navigate) => {
   return {
     type: POST_DOCUMENT,
-    payload: { document },
+    payload: { document, navigate },
   };
 };
 
