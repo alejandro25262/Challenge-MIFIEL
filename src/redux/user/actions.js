@@ -1,6 +1,6 @@
 import {
   SAVE_USER_DATA,
-  SAVE_USER_DATA_CORRECTO,
+  SAVE_USER_DATA_SUCCESS,
   SAVE_USER_DATA_ERROR,
 } from "../actions";
 
@@ -10,9 +10,9 @@ export const saveUser = () => {
   };
 };
 
-export const saveUserCorrecto = (user) => {
+export const saveUserSuccess = (user) => {
   return {
-    type: SAVE_USER_DATA_CORRECTO,
+    type: SAVE_USER_DATA_SUCCESS,
     payload: { user },
   };
 };

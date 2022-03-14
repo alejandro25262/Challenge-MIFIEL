@@ -1,7 +1,7 @@
 import { all, call, fork, put, takeEvery } from "redux-saga/effects";
-import { get } from "../../API/endpoints";
+import { getMIFIEL } from "../../API/endpoints";
 import { SAVE_USER_DATA } from "../actions";
-import { saveUserCorrecto } from "../user/actions";
+import { saveUserSuccess } from "../user/actions";
 
 import utf8 from "utf8/utf8";
 
@@ -11,7 +11,9 @@ export function* getUserData() {
 }
 
 const getUserDataApi = async () => {
-  const data = await get("https://app-sandbox.mifiel.com/api/v1/users/me");
+  const data = await getMIFIEL(
+    "https://app-sandbox.mifiel.com/api/v1/users/me"
+  );
   if (data) {
     const { name, email } = data;
     const nameArray = name.split(" ");
@@ -26,7 +28,7 @@ const getUserDataApi = async () => {
 function* getUser() {
   try {
     const response = yield call(getUserDataApi);
-    yield put(saveUserCorrecto(response));
+    yield put(saveUserSuccess(response));
   } catch (error) {}
 }
 

@@ -22,3 +22,13 @@
 - Header
 - drag and drop is implemented
 - tailwindcss is implemented in all components
+
+## 13/03/2022 03:00pm-08:14pm
+
+- view addDocument for upload document in MIFIEL
+- Form validations
+- install react-table
+- logic of table, make the columns and data
+- route management
+- asynchronous requests using sagas
+- errors management

@@ -3,7 +3,7 @@ const credentials = btoa(
 );
 const auth = { Authorization: `Basic ${credentials}` };
 
-export const get = async (apiUrl, filters = {}) => {
+export const getMIFIEL = async (apiUrl, filters = {}) => {
   const requestConfig = {
     method: "GET",
     headers: new Headers({
@@ -29,7 +29,7 @@ export const get = async (apiUrl, filters = {}) => {
   return catalogo;
 };
 
-export const postDocument = async (apiUrl, model) => {
+export const postDocumentMIFIEL = async (apiUrl, model) => {
   const requestConfig = {
     method: "POST",
     headers: new Headers({
@@ -46,7 +46,7 @@ export const postDocument = async (apiUrl, model) => {
   return data;
 };
 
-export const deleteDocument = async (apiUrl, id) => {
+export const deleteDocumentMIFIEL = async (apiUrl, id) => {
   const requestConfig = {
     method: "DELETE",
     headers: new Headers({
@@ -55,7 +55,7 @@ export const deleteDocument = async (apiUrl, id) => {
     }),
   };
 
-  const urlWithId = `${apiUrl}${encodeURI(id)}/`;
+  const urlWithId = `${apiUrl}/${encodeURI(id)}/`;
 
   const request = new Request(urlWithId, requestConfig);
   const response = await fetch(request);

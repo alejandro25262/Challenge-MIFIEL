@@ -1,17 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { saveUser } from "../redux/user/actions";
+import React from "react";
+import { useSelector } from "react-redux";
 import Logo from "./components/Logo";
 import Avatar from "./components/Avatar";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state);
   const { loading, name, email } = user;
-
-  useEffect(() => {
-    dispatch(saveUser());
-  }, []);
 
   return (
     <div className="w-full h-20 px-40 flex justify-between items-center border-gray-900 border-b-2">
