@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> match snapshot 1`] = `
+<img
+  alt="Logo"
+  className="w-32"
+  src="images/mifiel_logo.webp"
+/>
+`;

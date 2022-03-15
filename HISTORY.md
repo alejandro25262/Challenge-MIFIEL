@@ -40,3 +40,8 @@
 - post document in saga
 - filters in saga
 - constants (Api routes)
+
+## 14/03/2022 07:pm-08:14pm
+
+- install enzyme for tests
+- test development
