@@ -9,7 +9,7 @@ import { setAlert } from "../redux/alert/actions";
 
 import { saveUser } from "../redux/user/actions";
 
-const Documents = lazy(() => import("../pages/Documents/Index"));
+const Documents = lazy(() => import("../pages/Documents/iindex"));
 const AddDocument = lazy(() => import("../pages/AddDocument/Index"));
 const NotFound = lazy(() => import("../pages/NotFound/Index"));
 
