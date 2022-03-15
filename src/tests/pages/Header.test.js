@@ -16,6 +16,7 @@ describe("<Header />", () => {
       .mockImplementation((state) => store.getState());
 
     const wrapper = shallow(<Header />);
+    // render Header with user data
     expect(wrapper).toMatchSnapshot();
   });
 });

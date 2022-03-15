@@ -17,20 +17,18 @@ AddDocument
 
 ## Store
 
+### documents
+
 ```
 {
-  user:{
-    name:'',
-    email:'',
-    avatar:''
-  },
   document: {
     binary: null,
     signatories: {
       email: '',
       name: '',
       rfc: '',
-    }
+    },
+    loading: true,
   },
   list: {
       filters: {
@@ -43,5 +41,26 @@ AddDocument
         data: [],
       },
     }
+}
+```
+
+### user
+
+```
+{
+  user:{
+    name:'',
+    email:'',
+    avatar:''
+  }
+}
+```
+
+### alert
+
+```
+{
+  alert: { type: null, message: [] },
+  error: null,
 }
 ```

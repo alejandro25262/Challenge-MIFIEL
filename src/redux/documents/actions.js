@@ -125,10 +125,3 @@ export const deleteDocumentApiError = (error) => {
     payload: { error },
   };
 };
-
-export const setAlert = (alert) => {
-  return {
-    type: SET_ALERT,
-    payload: { alert },
-  };
-};

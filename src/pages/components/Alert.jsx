@@ -1,17 +1,18 @@
 import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { setAlert } from "../../redux/documents/actions";
+import { setAlert } from "../../redux/alert/actions";
 
 const Alert = () => {
-  const { alert } = useSelector((state) => state);
+  const { alert } = useSelector((state) => state.alert);
   const { type, message } = alert;
   const ref = useRef(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // if there is an alert then we show it
     if (type) {
       ref.current.style.display = "flex";
+      // hide it after 5 seconds
       setTimeout(() => {
         ref.current.style.display = "none";
         dispatch(setAlert({ type: null, message: "" }));

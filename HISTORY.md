@@ -51,3 +51,9 @@
 - alert development
 - action, reducer for send alert
 - apply new alert (before was window.alert)
+
+## 15/03/2022 09:00am-10:50am
+
+- loader in button
+- refactor in code
+- documentation

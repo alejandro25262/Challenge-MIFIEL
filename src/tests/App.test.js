@@ -18,6 +18,7 @@ describe("App", () => {
     const dispatch = jest.fn();
     useDispatchMock.mockReturnValue(dispatch);
     render(<App />);
+    // in the first render shows Loading...
     const text = screen.getByText("Loading...");
     expect(text).toBeInTheDocument();
   });

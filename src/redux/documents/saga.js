@@ -10,10 +10,10 @@ import {
   deleteDocumentApiSuccess,
   getDocumentsSuccess,
   postDocumentApiError,
-  setAlert,
 } from "../documents/actions";
 
 import { DOCUMENTS_URL } from "../../constants/apiRoutes.js";
+import { setAlert } from "../alert/actions";
 
 export function* getDocuments() {
   // eslint-disable-next-line no-use-before-define

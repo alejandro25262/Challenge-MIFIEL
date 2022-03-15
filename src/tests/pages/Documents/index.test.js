@@ -10,7 +10,7 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
-describe("App", () => {
+describe("Documents", () => {
   const useSelectorMock = jest.spyOn(reactRedux, "useSelector");
   const useDispatchMock = jest.spyOn(reactRedux, "useDispatch");
 
@@ -68,6 +68,7 @@ describe("App", () => {
 
     render(<Document />);
 
+    // if a column shows then the table is rendered
     const textPending = screen.getByText("Nombre del documento");
 
     expect(textPending).toBeInTheDocument();

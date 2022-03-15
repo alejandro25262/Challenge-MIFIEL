@@ -6,7 +6,7 @@ import AppRouter from "./routes/AppRouter";
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Alert />;
+      <Alert />
       <Header />
       <AppRouter />
     </Suspense>

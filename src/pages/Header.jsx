@@ -4,7 +4,7 @@ import Logo from "./components/Logo";
 import Avatar from "./components/Avatar";
 
 const Header = () => {
-  const { user } = useSelector((state) => state);
+  const { user } = useSelector((state) => state.user);
   const { loading, name, email } = user;
 
   return (

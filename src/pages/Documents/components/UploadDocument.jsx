@@ -41,7 +41,9 @@ const UploadDocument = () => {
   };
 
   const handleSubmit = async (files, allFiles) => {
+    // upload a file to store
     dispatch(saveDocument(files[0].file));
+    // redirect to be able to fill the data of the signatories
     navigate("/subirDocumento");
 
     allFiles.forEach((f) => f.remove());
@@ -52,6 +54,7 @@ const UploadDocument = () => {
       <p>Arrastra o haz clic aquí para seleccionar un archivo de Excel</p>
     </Fragment>
   );
+
   return (
     <div>
       <h1 className="font-bold text-xl">

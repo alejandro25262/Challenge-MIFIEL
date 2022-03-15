@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 const Avatar = ({ className }) => {
-  const { user } = useSelector((state) => state);
+  const { user } = useSelector((state) => state.user);
   const { avatar } = user;
 
   return (

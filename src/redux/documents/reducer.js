@@ -6,9 +6,6 @@ import {
   GET_DOCUMENTS_ERROR,
   SAVE_DOCUMENT,
   SAVE_DOCUMENT_ERROR,
-  SAVE_USER_DATA,
-  SAVE_USER_DATA_SUCCESS,
-  SAVE_USER_DATA_ERROR,
   SET_FILTER_DOCUMENTS,
   UPDATE_SIGNER,
   DELETE_DOCUMENT,
@@ -17,16 +14,9 @@ import {
   POST_DOCUMENT,
   POST_DOCUMENT_SUCCESS,
   POST_DOCUMENT_ERROR,
-  SET_ALERT,
 } from "../actions";
 
 const INIT_STATE = {
-  user: {
-    name: "",
-    email: "",
-    avatar: "",
-    loading: true,
-  },
   document: {
     binary: null,
     signatories: [
@@ -36,8 +26,8 @@ const INIT_STATE = {
         rfc: "",
       },
     ],
+    loading: false,
   },
-  alert: { type: null, message: [] },
   error: null,
   list: {
     filters: {
@@ -55,19 +45,6 @@ const INIT_STATE = {
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
-    case SAVE_USER_DATA:
-      return { ...state, user: { ...state.user, loading: true } };
-
-    case SAVE_USER_DATA_SUCCESS:
-      return { ...state, user: { ...action.payload.user, loading: false } };
-
-    case SAVE_USER_DATA_ERROR:
-      return {
-        ...state,
-        user: { ...state.user, loading: false },
-        error: action.payload.error,
-      };
-
     case SAVE_DOCUMENT:
       return {
         ...state,
@@ -187,6 +164,10 @@ export default (state = INIT_STATE, action) => {
           ...state.list,
           loading: true,
         },
+        document: {
+          ...state.document,
+          loading: true,
+        },
       };
 
     case POST_DOCUMENT_SUCCESS:
@@ -197,6 +178,10 @@ export default (state = INIT_STATE, action) => {
           loading: false,
           table: { ...state.list.table, data: action.payload.documents },
         },
+        document: {
+          ...state.document,
+          loading: false,
+        },
       };
 
     case POST_DOCUMENT_ERROR:
@@ -206,13 +191,11 @@ export default (state = INIT_STATE, action) => {
           ...state.list,
           loading: false,
         },
+        document: {
+          ...state.document,
+          loading: false,
+        },
         error: action.payload.error,
-      };
-
-    case SET_ALERT:
-      return {
-        ...state,
-        alert: { ...action.payload.alert },
       };
 
     default:

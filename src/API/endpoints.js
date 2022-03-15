@@ -1,5 +1,5 @@
 const credentials = btoa(
-  "459fe365ff2c8f27492803c8da5b89ff076549de:mjdhcn4Ln2MMoSri/UPo1T+sDq7/TwqcHU8BUZnhsTbV60BWPEPzLK0xKMUQ1qSsIhfkTQyQA+RSv4kwy59JZw=="
+  `${process.env.REACT_APP_ID}:${process.env.REACT_APP_SECRET}`
 );
 const auth = { Authorization: `Basic ${credentials}` };
 

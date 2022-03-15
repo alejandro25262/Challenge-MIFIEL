@@ -5,7 +5,7 @@
 import React, { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { setAlert } from "../redux/documents/actions";
+import { setAlert } from "../redux/alert/actions";
 
 import { saveUser } from "../redux/user/actions";
 
@@ -15,13 +15,15 @@ const NotFound = lazy(() => import("../pages/NotFound/Index"));
 
 const AppRouter = () => {
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state);
+  const { error } = useSelector((state) => state.documents);
 
   useEffect(() => {
+    // each render, get the data from the user
     dispatch(saveUser());
   }, []);
 
   useEffect(() => {
+    // if there are errors then it show an alert
     if (error) {
       dispatch(setAlert({ type: "error", message: error }));
     }

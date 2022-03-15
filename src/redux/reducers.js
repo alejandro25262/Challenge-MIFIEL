@@ -1,3 +1,12 @@
-import state from "./documents/reducer";
+import { combineReducers } from "redux";
+import documents from "./documents/reducer";
+import user from "./user/reducer";
+import alert from "./alert/reducer";
 
-export default state;
+const reducers = combineReducers({
+  user,
+  documents,
+  alert,
+});
+
+export default reducers;

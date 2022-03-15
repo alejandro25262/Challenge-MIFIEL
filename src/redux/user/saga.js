@@ -16,7 +16,9 @@ const getUserDataApi = async () => {
   if (data) {
     const { name, email } = data;
     const nameArray = name.split(" ");
+    // avatar is the first 2 characters
     const avatar = `${nameArray[0].charAt(0)}${nameArray[1].charAt(0)}`;
+    // decode name 2 times because it has an error
     const newData = { name: utf8.decode(utf8.decode(name)), email, avatar };
 
     return newData;

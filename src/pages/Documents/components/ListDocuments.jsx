@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTable, useGlobalFilter, useSortBy } from "react-table";
+import { useTable } from "react-table";
 import {
   deleteDocumentApi,
   getDocuments,
@@ -10,7 +10,7 @@ import Avatar from "../../components/Avatar";
 
 const ListDocuments = () => {
   const dispatch = useDispatch();
-  const { list } = useSelector((state) => state);
+  const { list } = useSelector((state) => state.documents);
   const {
     loading,
     table: { data: dataStore },
@@ -18,15 +18,18 @@ const ListDocuments = () => {
   } = list;
 
   useEffect(() => {
+    // when the filter changes then the documents are requested
     dispatch(getDocuments(filters));
   }, [filters]);
 
-  const handleClick = (filter) => {
+  const handleClickFilter = (filter) => {
+    // update filter state
     // 1 = page, 10 = per page
     dispatch(setFiltersDocuments(filter, 1, 10));
   };
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChangePerPage = ({ target: { value } }) => {
+    // update filter state
     // 1 = page
     dispatch(setFiltersDocuments(filters.status, 1, value));
   };
@@ -35,6 +38,7 @@ const ListDocuments = () => {
     dispatch(deleteDocumentApi(id, filters));
   };
 
+  // columns of table
   const columns = React.useMemo(
     () => [
       {
@@ -113,17 +117,14 @@ const ListDocuments = () => {
     [dataStore]
   );
 
+  // memorize the table data
   const data = React.useMemo(() => dataStore, [dataStore]);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable(
-      {
-        columns,
-        data,
-      },
-      useGlobalFilter,
-      useSortBy
-    );
+    useTable({
+      columns,
+      data,
+    });
 
   return (
     <>
@@ -132,19 +133,25 @@ const ListDocuments = () => {
         <div className="w-1/2 h-1 bg-gray-900 rounded-full mx-2" />
         <div className="flex items-center">
           <div className="bg-yellow-500 w-3 h-3 rounded-full mr-2" />
-          <p className="cursor-pointer" onClick={() => handleClick("pending")}>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickFilter("pending")}
+          >
             En progreso
           </p>
         </div>
         <div className="flex items-center mx-4">
           <div className="bg-green-500 w-3 h-3 rounded-full mr-2" />
-          <p className="cursor-pointer" onClick={() => handleClick("signed")}>
+          <p
+            className="cursor-pointer"
+            onClick={() => handleClickFilter("signed")}
+          >
             Firmado
           </p>
         </div>
         <div className="flex items-center">
           <div className="bg-gray-900 w-3 h-3 rounded-full mr-2" />
-          <p className="cursor-pointer" onClick={() => handleClick("")}>
+          <p className="cursor-pointer" onClick={() => handleClickFilter("")}>
             Todos
           </p>
         </div>
@@ -213,7 +220,7 @@ const ListDocuments = () => {
         <select
           name="select"
           value={filters.perPage}
-          onChange={handleChange}
+          onChange={handleChangePerPage}
           className="mx-1"
         >
           <option value="1">1</option>
