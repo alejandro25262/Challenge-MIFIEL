@@ -14,6 +14,7 @@ import {
   DELETE_DOCUMENT,
   DELETE_DOCUMENT_SUCCESS,
   DELETE_DOCUMENT_ERROR,
+  SET_ALERT,
 } from "../actions";
 
 export const saveDocument = (document) => {
@@ -122,5 +123,12 @@ export const deleteDocumentApiError = (error) => {
   return {
     type: DELETE_DOCUMENT_ERROR,
     payload: { error },
+  };
+};
+
+export const setAlert = (alert) => {
+  return {
+    type: SET_ALERT,
+    payload: { alert },
   };
 };

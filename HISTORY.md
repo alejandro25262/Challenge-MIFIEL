@@ -45,3 +45,9 @@
 
 - install enzyme for tests
 - test development
+
+## 14/03/2022 10:30:pm-11:23pm
+
+- alert development
+- action, reducer for send alert
+- apply new alert (before was window.alert)

@@ -5,6 +5,7 @@
 import React, { lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { setAlert } from "../redux/documents/actions";
 
 import { saveUser } from "../redux/user/actions";
 
@@ -21,7 +22,9 @@ const AppRouter = () => {
   }, []);
 
   useEffect(() => {
-    if (error) error.map((err) => window.alert(err));
+    if (error) {
+      dispatch(setAlert({ type: "error", message: error }));
+    }
   }, [error]);
 
   return (

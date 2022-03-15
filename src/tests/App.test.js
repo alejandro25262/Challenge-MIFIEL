@@ -11,7 +11,10 @@ describe("App", () => {
     useDispatchMock.mockClear();
   });
   test("render loader on first render", () => {
-    useSelectorMock.mockReturnValue({ user: {} });
+    useSelectorMock.mockReturnValue({
+      user: {},
+      alert: { type: null, message: [] },
+    });
     const dispatch = jest.fn();
     useDispatchMock.mockReturnValue(dispatch);
     render(<App />);

@@ -10,6 +10,7 @@ import {
   deleteDocumentApiSuccess,
   getDocumentsSuccess,
   postDocumentApiError,
+  setAlert,
 } from "../documents/actions";
 
 import { DOCUMENTS_URL } from "../../constants/apiRoutes.js";
@@ -75,6 +76,12 @@ function* deleteDocumentSaga({ payload }) {
     // for some reason it shows error but deletes the document
     const response = yield call(getDocumentsDataApi, filters);
     yield put(deleteDocumentApiSuccess(response));
+    yield put(
+      setAlert({
+        type: "success",
+        message: ["¡Has eliminado el documento exitosamente!"],
+      })
+    );
   }
 }
 
@@ -109,7 +116,12 @@ function* postDocumentSaga({ payload }) {
     }
 
     if (response.state) {
-      window.alert("¡Has enviado el documento exitosamente!");
+      yield put(
+        setAlert({
+          type: "success",
+          message: ["¡Has enviado el documento exitosamente!"],
+        })
+      );
       navigate("/");
     }
   } catch (error) {

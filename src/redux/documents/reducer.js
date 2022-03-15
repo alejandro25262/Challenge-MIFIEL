@@ -17,6 +17,7 @@ import {
   POST_DOCUMENT,
   POST_DOCUMENT_SUCCESS,
   POST_DOCUMENT_ERROR,
+  SET_ALERT,
 } from "../actions";
 
 const INIT_STATE = {
@@ -36,6 +37,7 @@ const INIT_STATE = {
       },
     ],
   },
+  alert: { type: null, message: [] },
   error: null,
   list: {
     filters: {
@@ -205,6 +207,12 @@ export default (state = INIT_STATE, action) => {
           loading: false,
         },
         error: action.payload.error,
+      };
+
+    case SET_ALERT:
+      return {
+        ...state,
+        alert: { ...action.payload.alert },
       };
 
     default:
