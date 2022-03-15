@@ -10,8 +10,8 @@ import { setAlert } from "../redux/alert/actions";
 import { saveUser } from "../redux/user/actions";
 
 const Documents = lazy(() => import("../pages/Documents/Index"));
-const AddDocument = lazy(() => import("../pages/AddDocument/iindex"));
-const NotFound = lazy(() => import("../pages/NotFound/iindex"));
+const AddDocument = lazy(() => import("../pages/AddDocument/Index"));
+const NotFound = lazy(() => import("../pages/NotFound/Index"));
 
 const AppRouter = () => {
   const dispatch = useDispatch();
